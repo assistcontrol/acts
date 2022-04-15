@@ -1,0 +1,17 @@
+name: Check
+on:
+  - push
+  - pull_request
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: action/checkout@v3
+
+      - name: Check
+        uses: luizm/action-sh-checker@master
+        env:
+          SHELLCHECK_OPTS: -e SC1091
+          SHFMT_OPTS: -i 4 -d -kp
